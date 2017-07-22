@@ -36,11 +36,15 @@ class Plugin extends gitbucket.core.plugin.Plugin {
   )
 
   override val repositorySettingTabs = Seq(
-    (repository: RepositoryInfo, context: Context) => Some(Link("pages", "Pages", s"settings/pages"))
+    (repository: RepositoryInfo, context: Context) => Some(Link("pages", "Pages", "settings/pages"))
   )
 
   override val repositoryHooks = Seq(
     new PagesHook
+  )
+
+  override val repositoryMenus = Seq(
+    (repository: RepositoryInfo, context: Context) => Some(Link("pages", "Pages", "/pages/", Some("repo")))
   )
 }
 
